@@ -26,7 +26,7 @@ const Home = () => {
     try {
       await axios.delete(`http://localhost:3000/budgets/${budgetId}`);
       setBudgets((prevBudgets) =>
-        prevBudgets.filter((budget) => budget._id !== budgetId),
+        prevBudgets.filter((budget) => budget._id !== budgetId)
       );
     } catch (error) {
       console.error("Error deleting budget:", error);
@@ -34,7 +34,7 @@ const Home = () => {
   };
   return (
     <div className="budget-container">
-      <h2>Budgets</h2>
+      <h2>BUDGETS</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (

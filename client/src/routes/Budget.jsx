@@ -1,3 +1,5 @@
+// Budget.js
+
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -28,7 +30,7 @@ function Budget() {
     const fetchExpenseDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/expenses/${id}`,
+          `http://localhost:3000/expenses/${id}`
         );
         setExpenses(response.data);
       } catch (error) {
@@ -46,7 +48,7 @@ function Budget() {
         {
           title: newExpenseTitle,
           amount: newExpenseAmount,
-        },
+        }
       );
       setExpenses([...expenses, response.data]);
       setNewExpenseTitle("");
@@ -81,9 +83,9 @@ function Budget() {
   };
 
   return (
-    <>
+    <div className="exp-budget-container">
       {budget && (
-        <>
+        <div className="budget-content">
           <h1>
             {budget.title} : {budget.budget}
           </h1>
@@ -109,17 +111,17 @@ function Budget() {
             <button type="submit">Add Expense</button>
           </form>
           {expenses.length > 0 ? (
-            <ul>
+            <div className="expenses-container">
               {expenses.map((expense) => (
-                <li key={expense._id}>
+                <div key={expense._id} className="expense-item">
                   <p>{expense.title}</p>
                   <p>{expense.amount}</p>
                   <button onClick={() => handleDeleteExpense(expense._id)}>
                     Delete
                   </button>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           ) : (
             <p>No expenses added yet.</p>
           )}
@@ -135,9 +137,9 @@ function Budget() {
             </label>
             <button type="submit">Increase Savings</button>
           </form>
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 

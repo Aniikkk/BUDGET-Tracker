@@ -1,3 +1,5 @@
+// Create.js
+
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +37,7 @@ const Create = () => {
   };
 
   return (
-    <div>
+    <div className="create-container">
       <h2>Create a New Budget</h2>
       <form onSubmit={handleSubmit}>
         <label>
